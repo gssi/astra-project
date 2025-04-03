@@ -18,8 +18,6 @@ Defines the Ecore-based metamodel representing the scheduling domain. It models 
 ### 4. `astra-project-solver`
 Implements the validation and optimization logic. It includes:
 - `EVL_validation`: EVL (Epsilon Validation Language) rules for checking model constraints (e.g., CPU load threshold).
-- `telemetries`: a sample folder for telemetry data input.
-- `model`: example scheduling models.
 - Java utilities to validate instances, prepare optimization inputs, and trigger reconfiguration logic.
 
 ## 🚀 Running the Tool
