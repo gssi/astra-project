@@ -1,0 +1,34 @@
+
+[%for (class in RootClass.eContainer().eContents()) {%]
+	[% if(class.isKindOf(EClass)) {%]
+import "[%=class.name%]Validator.evl";
+	[%}%]
+[%}%]
+[%for (subPackage in RootClass.ePackage.getESubpackages()) {%]
+	[%for (class in subPackage.eContents()) {%]
+		[% if(class.isKindOf(EClass)) {%]
+import "[%=class.name%]Validator.evl";
+		[%}%]
+	[%}%]
+[%}%]
+
+[%=out.startPreserve("/*","*/", "customImport", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+
+pre {
+[%=out.startPreserve("/*","*/","Pre", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+}
+
+
+[%=out.startPreserve("/*","*/", "genericConstraints", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+
+post {
+[%=out.startPreserve("/*","*/","Post", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+}

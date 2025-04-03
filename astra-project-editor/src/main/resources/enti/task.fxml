@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import it.gssi.astra.metaeditor.common.ente.Ente?>
+<?import it.gssi.astra.metaeditor.common.magnete.AnchorPoint?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<fx:root type="Ente" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle fill="#96a3b07d" height="30.0" stroke="BLACK" strokeType="INSIDE" width="1750.0" />
+      <GridPane gridLinesVisible="true" style="-fx-background-color: #6b6b6b#6b6b6b;">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="nameTask" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="50.0" prefHeight="20.0" prefWidth="100.0" text="6" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane gridLinesVisible="true" layoutX="100.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #6b6b6b#6b6b6b;">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="priority" text="1" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <AnchorPoint fx:id="tick_0_0_Connectable" centerX="150.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_0_1_Connectable" centerX="200.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_1_0_Connectable" centerX="250.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_1_1_Connectable" centerX="300.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_2_0_Connectable" centerX="350.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_2_1_Connectable" centerX="400.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_3_0_Connectable" centerX="450.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_3_1_Connectable" centerX="500.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_4_0_Connectable" centerX="550.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_4_1_Connectable" centerX="600.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_5_0_Connectable" centerX="650.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_5_1_Connectable" centerX="700.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_6_0_Connectable" centerX="750.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_6_1_Connectable" centerX="800.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_7_0_Connectable" centerX="850.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_7_1_Connectable" centerX="900.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_8_0_Connectable" centerX="950.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_8_1_Connectable" centerX="1000.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_9_0_Connectable" centerX="1050.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_9_1_Connectable" centerX="1100.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_10_0_Connectable" centerX="1150.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_10_1_Connectable" centerX="1200.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_11_0_Connectable" centerX="1250.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_11_1_Connectable" centerX="1300.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_12_0_Connectable" centerX="1350.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_12_1_Connectable" centerX="1400.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_13_0_Connectable" centerX="1450.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_13_1_Connectable" centerX="1500.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_14_0_Connectable" centerX="1550.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_14_1_Connectable" centerX="1600.0" centerY="15.0" />
+      
+      <AnchorPoint fx:id="tick_15_0_Connectable" centerX="1650.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_15_1_Connectable" centerX="1700.0" centerY="15.0" />
+      <AnchorPoint fx:id="tick_16_0_Connectable" centerX="1750.0" centerY="15.0" />
+
+   </children>
+</fx:root>

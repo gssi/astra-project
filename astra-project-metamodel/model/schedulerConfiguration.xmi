@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaEditorConfiguration:MetaEditorConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MetaEditorConfiguration="https://ermes-project.org/MetaEditorConfiguration" xsi:schemaLocation="https://ermes-project.org/MetaEditorConfiguration https://ermes-project.org/MetaEditorPersistence#//MetaEditorConfiguration" name="editor" initCanvasWidth="1920" initCanvasHeight="1080">
+  <rootElement href="scheduler.ecore#//SchedulerModel"/>
+  <graphicalElements name="TaskTable" fxmlPath="/enti/tableTask.fxml">
+    <element href="scheduler.ecore#//TableTask"/>
+    <nameAttribute href="scheduler.ecore#//NamedElement/name"/>
+    <containmentRef href="scheduler.ecore#//SchedulerModel/tableTask"/>
+  </graphicalElements>
+  <graphicalElements name="Task" selectWithParent="true" fxmlPath="/enti/task.fxml">
+    <element href="scheduler.ecore#//Task"/>
+    <anchorPoints name="tick_0_0_Connectable"/>
+    <anchorPoints name="tick_0_1_Connectable"/>
+    <anchorPoints name="tick_1_0_Connectable"/>
+    <anchorPoints name="tick_1_1_Connectable"/>
+    <anchorPoints name="tick_2_0_Connectable"/>
+    <anchorPoints name="tick_2_1_Connectable"/>
+    <anchorPoints name="tick_3_0_Connectable"/>
+    <anchorPoints name="tick_3_1_Connectable"/>
+    <anchorPoints name="tick_4_0_Connectable"/>
+    <anchorPoints name="tick_4_1_Connectable"/>
+    <anchorPoints name="tick_5_0_Connectable"/>
+    <anchorPoints name="tick_5_1_Connectable"/>
+    <anchorPoints name="tick_6_0_Connectable"/>
+    <anchorPoints name="tick_6_1_Connectable"/>
+    <anchorPoints name="tick_7_0_Connectable"/>
+    <anchorPoints name="tick_7_1_Connectable"/>
+    <anchorPoints name="tick_8_0_Connectable"/>
+    <anchorPoints name="tick_8_1_Connectable"/>
+    <anchorPoints name="tick_9_0_Connectable"/>
+    <anchorPoints name="tick_9_1_Connectable"/>
+    <anchorPoints name="tick_10_0_Connectable"/>
+    <anchorPoints name="tick_10_1_Connectable"/>
+    <anchorPoints name="tick_11_0_Connectable"/>
+    <anchorPoints name="tick_11_1_Connectable"/>
+    <anchorPoints name="tick_12_0_Connectable"/>
+    <anchorPoints name="tick_12_1_Connectable"/>
+    <anchorPoints name="tick_13_0_Connectable"/>
+    <anchorPoints name="tick_13_1_Connectable"/>
+    <anchorPoints name="tick_14_0_Connectable"/>
+    <anchorPoints name="tick_14_1_Connectable"/>
+    <anchorPoints name="tick_15_0_Connectable"/>
+    <anchorPoints name="tick_15_1_Connectable"/>
+    <anchorPoints name="tick_16_0_Connectable"/>
+    <nameAttribute href="scheduler.ecore#//NamedElement/name"/>
+    <containmentRef href="scheduler.ecore#//TableTask/tasks"/>
+  </graphicalElements>
+  <graphicalElements name="ACT" bendableElement="true" selectWithParent="true" fxmlPath="/enti/schema.fxml">
+    <element href="scheduler.ecore#//ACT"/>
+    <anchorPoints name="task_sx_Connectable" connectableAnchorPoints="//@graphicalElements.1/@anchorPoints.0 //@graphicalElements.1/@anchorPoints.1 //@graphicalElements.1/@anchorPoints.2 //@graphicalElements.1/@anchorPoints.3 //@graphicalElements.1/@anchorPoints.4 //@graphicalElements.1/@anchorPoints.5 //@graphicalElements.1/@anchorPoints.6 //@graphicalElements.1/@anchorPoints.7 //@graphicalElements.1/@anchorPoints.8 //@graphicalElements.1/@anchorPoints.9 //@graphicalElements.1/@anchorPoints.10 //@graphicalElements.1/@anchorPoints.11 //@graphicalElements.1/@anchorPoints.12 //@graphicalElements.1/@anchorPoints.13 //@graphicalElements.1/@anchorPoints.14 //@graphicalElements.1/@anchorPoints.15 //@graphicalElements.1/@anchorPoints.16 //@graphicalElements.1/@anchorPoints.17 //@graphicalElements.1/@anchorPoints.18 //@graphicalElements.1/@anchorPoints.19 //@graphicalElements.1/@anchorPoints.20 //@graphicalElements.1/@anchorPoints.21 //@graphicalElements.1/@anchorPoints.22 //@graphicalElements.1/@anchorPoints.23 //@graphicalElements.1/@anchorPoints.24 //@graphicalElements.1/@anchorPoints.25 //@graphicalElements.1/@anchorPoints.26 //@graphicalElements.1/@anchorPoints.27 //@graphicalElements.1/@anchorPoints.28 //@graphicalElements.1/@anchorPoints.29 //@graphicalElements.1/@anchorPoints.30 //@graphicalElements.1/@anchorPoints.31"/>
+    <anchorPoints name="task_dx_Connectable" connectableAnchorPoints="//@graphicalElements.1/@anchorPoints.0 //@graphicalElements.1/@anchorPoints.1 //@graphicalElements.1/@anchorPoints.2 //@graphicalElements.1/@anchorPoints.3 //@graphicalElements.1/@anchorPoints.4 //@graphicalElements.1/@anchorPoints.5 //@graphicalElements.1/@anchorPoints.6 //@graphicalElements.1/@anchorPoints.7 //@graphicalElements.1/@anchorPoints.8 //@graphicalElements.1/@anchorPoints.9 //@graphicalElements.1/@anchorPoints.10 //@graphicalElements.1/@anchorPoints.11 //@graphicalElements.1/@anchorPoints.12 //@graphicalElements.1/@anchorPoints.13 //@graphicalElements.1/@anchorPoints.14 //@graphicalElements.1/@anchorPoints.15 //@graphicalElements.1/@anchorPoints.16 //@graphicalElements.1/@anchorPoints.17 //@graphicalElements.1/@anchorPoints.18 //@graphicalElements.1/@anchorPoints.19 //@graphicalElements.1/@anchorPoints.20 //@graphicalElements.1/@anchorPoints.21 //@graphicalElements.1/@anchorPoints.22 //@graphicalElements.1/@anchorPoints.23 //@graphicalElements.1/@anchorPoints.24 //@graphicalElements.1/@anchorPoints.25 //@graphicalElements.1/@anchorPoints.26 //@graphicalElements.1/@anchorPoints.27 //@graphicalElements.1/@anchorPoints.28 //@graphicalElements.1/@anchorPoints.29 //@graphicalElements.1/@anchorPoints.30 //@graphicalElements.1/@anchorPoints.31 //@graphicalElements.1/@anchorPoints.32"/>
+    <nameAttribute href="scheduler.ecore#//NamedElement/name"/>
+    <containmentRef href="scheduler.ecore#//Task/acts"/>
+  </graphicalElements>
+  <graphicalElements name="Tick">
+    <element href="scheduler.ecore#//Tick"/>
+    <nameAttribute href="scheduler.ecore#//NamedElement/name"/>
+    <containmentRef href="scheduler.ecore#//ACT/start"/>
+    <containmentRef href="scheduler.ecore#//ACT/end"/>
+  </graphicalElements>
+</MetaEditorConfiguration:MetaEditorConfiguration>

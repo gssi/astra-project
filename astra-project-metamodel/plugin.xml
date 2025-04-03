@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated scheduler -->
+      <package
+            uri="gssi.astra.scheduler"
+            class="Scheduler.SchedulerPackage"
+            genModel="model/scheduler.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated TelemetryPacketData -->
+      <package
+            uri="gssi.astra.telemetry.packetdata"
+            class="TelemetryPacketData.PacketDataPackage"
+            genModel="model/TelemetryPacketData.genmodel"/>
+   </extension>
+
+</plugin>

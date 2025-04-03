@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import it.gssi.astra.metaeditor.common.treeView.CustomTreeView?>
+<?import it.gssi.astra.metaeditor.common.canvas.Workspace?>
+<?import org.controlsfx.control.PropertySheet?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.SplitPane?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Group?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import java.net.URL?>
+<?import it.gssi.astra.metaeditor.common.menu.CustomMenu?>
+
+<fx:root fx:id="scene" minHeight="600.0" minWidth="800.0" type="BorderPane" xmlns:fx="http://javafx.com/fxml/1" >
+	  <stylesheets>
+	      <URL value="@stylesheets/application.css" />
+	      <URL value="@stylesheets/toggleswitch.css" />
+           <URL value="@stylesheets/validation.css" />
+	  </stylesheets>
+ 	  <top>
+	 	  <VBox BorderPane.alignment="CENTER">
+	         <children>
+	        	<CustomMenu fx:id="customMenu"/>
+	     	 </children>
+	      </VBox>
+      </top>
+   <left>
+         <ScrollPane maxHeight="800.0" maxWidth="-Infinity" minWidth="50" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane maxWidth="-Infinity">
+               <children>
+                    <VBox spacing="3.0" fx:id="palette" BorderPane.alignment="CENTER">
+         <children>   
+      		
+         </children>
+         <BorderPane.margin>
+            <Insets top="10.0" left="10.0" right="10.0"/>
+         </BorderPane.margin>
+                              <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+      </VBox> 
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </left>
+   <center>
+   		<Workspace fx:id="workspace"  BorderPane.alignment="CENTER">
+	   		<!-- Margin necessary for the scroll of the canvas - Issue #21 -->
+	   		<BorderPane.margin>
+	            <Insets top="1.0" right="1.0" left="1.0" bottom="1.0" />
+	         </BorderPane.margin>
+         </Workspace>
+   </center>
+   <right>
+
+   </right>
+   <bottom>
+	     <SplitPane fx:id="properties" dividerPositions="0.7211055276381909" orientation="HORIZONTAL" BorderPane.alignment="CENTER">
+        <items>
+          <PropertySheet fx:id="propertySheet" />
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+          	<children>
+           		<CustomTreeView fx:id="treeView" BorderPane.alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" minWidth="260.0"/>
+          	</children>
+          </AnchorPane>
+          
+        </items>
+    </SplitPane>
+    </bottom>
+</fx:root>

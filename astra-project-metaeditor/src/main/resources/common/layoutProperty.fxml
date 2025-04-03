@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+ <children>
+   <Text fill="#797979" layoutX="12.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinate" AnchorPane.leftAnchor="12.0" />
+   <Line endX="236.0" layoutX="14.0" layoutY="43.0" startX="-14.0" strokeLineCap="ROUND" strokeWidth="0.25" />
+         <HBox alignment="CENTER" layoutX="29.0" layoutY="70.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+              <children>
+                   <Label text="X" textFill="#797979">
+                     <font>
+                         <Font size="12.0" />
+                     </font>
+                  	</Label>
+					<TextField prefHeight="27.0" prefWidth="85.0" fx:id="x" />
+                </children>
+          </HBox>
+          <HBox alignment="CENTER" layoutX="10.0" layoutY="70.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+          	<children>
+            	<Label text="Y" textFill="#797979">
+                	<font>
+                    	<Font size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="y" prefHeight="27.0" prefWidth="85.0" />
+            </children>
+          </HBox>
+ </children>
+</fx:root>

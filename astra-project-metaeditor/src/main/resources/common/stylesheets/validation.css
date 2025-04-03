@@ -1,0 +1,14 @@
+.error {
+    -fx-effect: dropshadow(three-pass-box, #e92825, 7, 0, 0, 0);
+    -fx-focus-color: #e92825;
+}
+
+.warning {
+    -fx-effect: dropshadow(three-pass-box, gold, 14, 0, 0, 0);
+    -fx-focus-color: gold;
+}
+
+.info {
+    -fx-effect: dropshadow(three-pass-box, skyblue, 14, 0, 0, 0);
+    -fx-focus-color: skyblue;
+}

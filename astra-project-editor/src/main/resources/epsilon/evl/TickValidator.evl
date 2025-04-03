@@ -1,0 +1,13 @@
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+context Tick{
+/* protected region TickConstraint on begin */
+	//TODO 
+/* protected region TickConstraint end */
+}
+
+/* protected region customOperations on begin */
+	//TODO 
+/* protected region customOperations end */

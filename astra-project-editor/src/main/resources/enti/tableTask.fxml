@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import it.gssi.astra.metaeditor.common.ente.Ente?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<fx:root type="Ente" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <Group>
+               <children>
+                  <Rectangle fill="#5c6872" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1750.0" />
+                  <GridPane prefHeight="30.0" prefWidth="450.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="core" text="Core" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1750.0" />
+                  <HBox prefHeight="30.0" prefWidth="800.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="150.0" />
+                              <Label layoutX="60.0" layoutY="4.0" text="BTS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="1" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="2" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="3" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="4" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="5" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="6" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="7" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="8" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="45.0" layoutY="4.0" text="9" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="10" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="11" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="12" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="13" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="14" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group>
+                           <children>
+                              <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="100.0" />
+                              <Label layoutX="41.0" layoutY="4.0" text="15" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                     </children>
+                  </HBox>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle fill="#1f93ff57" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1750.0" />
+                  <Group>
+                     <children>
+                        <HBox prefHeight="30.0" prefWidth="800.0">
+                           <children>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="150.0" />
+                                    <Label layoutX="57.0" layoutY="5.0" text="Tick" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group>
+                                 <children>
+                                    <Rectangle fill="#7a7a7a59" height="30.0" stroke="WHITE" strokeType="INSIDE" width="50.0" />
+                                    <Label layoutX="21.0" layoutY="4.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle fill="#5c6872" height="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1750.0" />
+                  <GridPane gridLinesVisible="true" prefHeight="30.0" prefWidth="99.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="core1" text="Prioriy" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="core11" text="Task" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </Group>
+         </children></VBox>
+   </children>
+</fx:root>

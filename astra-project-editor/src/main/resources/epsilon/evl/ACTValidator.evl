@@ -1,0 +1,13 @@
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+context ACT{
+/* protected region ACTConstraint on begin */
+	//TODO 
+/* protected region ACTConstraint end */
+}
+
+/* protected region customOperations on begin */
+	//TODO 
+/* protected region customOperations end */

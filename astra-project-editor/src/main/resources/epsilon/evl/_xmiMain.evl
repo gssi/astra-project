@@ -1,0 +1,28 @@
+
+import "SchedulerModelValidator.evl";
+import "TableTaskValidator.evl";
+import "TaskValidator.evl";
+import "ACTValidator.evl";
+import "TickValidator.evl";
+import "NamedElementValidator.evl";
+
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+pre {
+/* protected region Pre on begin */
+	//TODO 
+/* protected region Pre end */
+}
+
+
+/* protected region genericConstraints on begin */
+	//TODO 
+/* protected region genericConstraints end */
+
+post {
+/* protected region Post on begin */
+	//TODO 
+/* protected region Post end */
+}

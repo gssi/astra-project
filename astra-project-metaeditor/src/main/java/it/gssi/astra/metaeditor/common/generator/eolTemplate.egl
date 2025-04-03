@@ -1,0 +1,14 @@
+
+[%=out.startPreserve("/*","*/", "Maineol", true)%]
+	//Main eol
+	//TODO
+[%=out.stopPreserve()%]
+
+
+
+
+[%=out.startPreserve("/*","*/", "eolOperations", true)%]
+	 // eol Operations
+	//TODO 
+[%=out.stopPreserve()%]
+

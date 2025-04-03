@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import it.gssi.astra.metaeditor.common.menu.CustomMenu?>
+<?import javafx.scene.control.RadioMenuItem?>
+
+<fx:root fx:id="menuBar" type="MenuBar" xmlns:fx="http://javafx.com/fxml/1" >
+	    <menus> 
+		    <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+		        			<items>
+		        				<MenuItem mnemonicParsing="false" onAction="#create" text="New" disable="false" accelerator="Shortcut+N"/>
+		        				<MenuItem mnemonicParsing="false" onAction="#load" text="Load" disable="false" accelerator="Shortcut+L"/>
+		        				<MenuItem mnemonicParsing="false" onAction="#loadFolder" text="Load Folder" disable="false"/>
+		        				<MenuItem mnemonicParsing="false" onAction="#loadSelection" text="Load Selection" disable="false"/>
+		        				<MenuItem mnemonicParsing="false" onAction="#save" text="Save" disable="true" accelerator="Shortcut+S"/>
+      							<MenuItem mnemonicParsing="false" onAction="#saveAll" text="Save All" disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+       							 </accelerator>
+      							</MenuItem>
+      							<MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save as ..." disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+       							 	</accelerator>
+       							 </MenuItem>
+		        				<MenuItem mnemonicParsing="false" onAction="#print" text="Print" disable="true" accelerator="Shortcut+P"/> 				
+		        				<MenuItem mnemonicParsing="false" onAction="#export" text="Export" disable="true" accelerator="Shortcut+E"/>
+		        				       
+		        			</items>
+		        		</Menu>
+		        		<Menu fx:id="menuModifica" mnemonicParsing="false" text="Update">
+		        			<items>
+		        				<MenuItem mnemonicParsing="false" onAction="#editMonitor" text="Section" disable="true"/>
+		        				<RadioMenuItem fx:id="lockMenu" mnemonicParsing="false"  text="Fixed Elements" disable="true"/>
+		        				<MenuItem mnemonicParsing="false" onAction="#copy" text="Copy" disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+       							 </accelerator>
+      							</MenuItem>
+      							<MenuItem mnemonicParsing="false" onAction="#paste" text="Paste" disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="UP" code="V" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+       							 </accelerator>
+      							</MenuItem>
+		        				<MenuItem mnemonicParsing="false" onAction="#undo" text="Undo" disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="UP" code="Z" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+       							 </accelerator>
+      							</MenuItem>
+      							<MenuItem mnemonicParsing="false" onAction="#redo" text="Redo" disable="true">
+		        					<accelerator>
+          								<KeyCodeCombination alt="UP" code="Y" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+       							 </accelerator>
+      							</MenuItem>
+		        			</items>
+		        		</Menu>
+		        		<Menu fx:id="menuVisualizza" mnemonicParsing="false" text="View">
+		        			<items>
+		        			<RadioMenuItem fx:id="menuShowCanvasSection" selected="true" onAction="#showCanvasSection" mnemonicParsing="false" text="Show Section" disable="true"/>
+		        			<MenuItem mnemonicParsing="false" onAction="#hideProperies" text="Hide/View Properties" disable="true"/>
+		        			<MenuItem fx:id="menuHideError" mnemonicParsing="false" onAction="#hideError" text="Hide Errors" disable="true"/>
+		        			<MenuItem mnemonicParsing="false" onAction="#showEnti" text="Show Elements" disable="true"/>
+		        			<Menu fx:id="menuZoom" mnemonicParsing="false" text="Zoom" disable="true">
+			        			<MenuItem mnemonicParsing="false"  fx:id="menuItemZoomPlus" onAction="#zoomPlus" text="Zoom in">
+				        			<accelerator>
+	          								<KeyCodeCombination alt="UP" code="ADD" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+	       							 </accelerator>
+			        			</MenuItem>
+			        			<MenuItem mnemonicParsing="false" fx:id="menuItemZoomMinus" onAction="#zoomMinus" text="Zoom out"/>
+			        			<MenuItem mnemonicParsing="false" fx:id="menuItemZoomReset" onAction="#zoomReset" text="Zoom 100%"/>		
+		        			</Menu>
+		        			</items>
+		        		</Menu>
+		        		<Menu fx:id="menuStrumenti" mnemonicParsing="false" text="Tools">
+		        			<MenuItem mnemonicParsing="false" onAction="#autoSetting" text="Auto-Setting" disable="true"/>
+		        			<MenuItem mnemonicParsing="false" onAction="#find" text="Search" disable="true">
+		        				<accelerator>
+	          						<KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+	       						</accelerator>
+		        			</MenuItem>	
+		        			<MenuItem mnemonicParsing="false" onAction="#openPreferences" text="Preferences" disable="true"/>
+		        			<MenuItem mnemonicParsing="false" onAction="#validate" text="Validation" disable="true"/>
+		        			<MenuItem mnemonicParsing="false" onAction="#zIndexReset" text="Reset Z-index" disable="true"/>
+		        		</Menu>
+              		</menus>
+     </fx:root>

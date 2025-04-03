@@ -1,0 +1,13 @@
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+context Task{
+/* protected region TaskConstraint on begin */
+	//TODO 
+/* protected region TaskConstraint end */
+}
+
+/* protected region customOperations on begin */
+	//TODO 
+/* protected region customOperations end */

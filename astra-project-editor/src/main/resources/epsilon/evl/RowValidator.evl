@@ -1,0 +1,13 @@
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+context Row{
+/* protected region RowConstraint on begin */
+	//TODO 
+/* protected region RowConstraint end */
+}
+
+/* protected region customOperations on begin */
+	//TODO 
+/* protected region customOperations end */

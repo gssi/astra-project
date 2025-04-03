@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/astra-project-metamodel/src/main/java" modelPluginID="astra-project-metamodel"
+    modelName="TelemetryPacketData" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>TelemetryPacketData.ecore</foreignModel>
+  <genPackages prefix="PacketData" disposableProviderFactory="true" ecorePackage="TelemetryPacketData.ecore#/">
+    <genClasses ecoreClass="TelemetryPacketData.ecore#//PacketDataModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TelemetryPacketData.ecore#//PacketDataModel/packetData"/>
+    </genClasses>
+    <genClasses ecoreClass="TelemetryPacketData.ecore#//PacketData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/frameTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/obrt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/pkt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/pktHeader"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/puslMaxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/satcmMaxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/ssmaplMaxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/ssmapfMaxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/aocscmPreMaxD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/aocnMaxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/aocscmPostMaxDur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/cmgMxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/sfdirMxDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/codMaxDur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TelemetryPacketData.ecore#//PacketData/podMaxDur"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

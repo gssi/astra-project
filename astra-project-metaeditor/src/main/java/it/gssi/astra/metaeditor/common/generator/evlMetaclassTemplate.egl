@@ -1,0 +1,13 @@
+[%=out.startPreserve("/*","*/", "customImport", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+
+context [%=class.getName()%]{
+[%=out.startPreserve("/*","*/",class.getName() + "Constraint", true)%]
+	//TODO 
+[%=out.stopPreserve()%]
+}
+
+[%=out.startPreserve("/*","*/", "customOperations", true)%]
+	//TODO 
+[%=out.stopPreserve()%]

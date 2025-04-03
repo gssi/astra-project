@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/astra-project-metamodel/src/main/java" modelPluginID="astra-project-metamodel"
+    modelName="Scheduler" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>scheduler.ecore</foreignModel>
+  <genPackages prefix="Scheduler" disposableProviderFactory="true" ecorePackage="scheduler.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="scheduler.ecore#//Period">
+      <genEnumLiterals ecoreEnumLiteral="scheduler.ecore#//Period/TICK_INTO_TSLICE"/>
+      <genEnumLiterals ecoreEnumLiteral="scheduler.ecore#//Period/TICK_INTO_SLICE_8_4"/>
+    </genEnums>
+    <genClasses ecoreClass="scheduler.ecore#//SchedulerModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scheduler.ecore#//SchedulerModel/tableTask"/>
+    </genClasses>
+    <genClasses ecoreClass="scheduler.ecore#//TableTask">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scheduler.ecore#//TableTask/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="scheduler.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduler.ecore#//Task/priority"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference scheduler.ecore#//Task/following"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduler.ecore#//Task/duration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference scheduler.ecore#//Task/acts"/>
+    </genClasses>
+    <genClasses ecoreClass="scheduler.ecore#//ACT">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference scheduler.ecore#//ACT/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference scheduler.ecore#//ACT/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduler.ecore#//ACT/period"/>
+    </genClasses>
+    <genClasses ecoreClass="scheduler.ecore#//Tick">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduler.ecore#//Tick/Value"/>
+    </genClasses>
+    <genClasses ecoreClass="scheduler.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduler.ecore#//NamedElement/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

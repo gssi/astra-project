@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import it.gssi.astra.metaeditor.common.canvas.Canvas?>
+
+<fx:root type="ScrollPane" fitToHeight="true" fitToWidth="true" focusTraversable="false" hbarPolicy="ALWAYS" style="-fx-border-width: 10; -fx-border-color: RGB(69, 69, 71);" stylesheets="@../application.css" vbarPolicy="ALWAYS" xmlns:fx="http://javafx.com/fxml" >
+	<content>
+    	<StackPane fx:id="zoomableCanvas" >
+        	<children>
+            	<Group fx:id="groupCanvas">
+               		<StackPane fx:id="rootCanvas" alignment="TOP_LEFT" visible="false">
+               			<children>
+			            	<Canvas fx:id="canvas" />
+		                </children>
+		            </StackPane>
+                </Group>
+            </children>
+        </StackPane>
+	</content>
+</fx:root>

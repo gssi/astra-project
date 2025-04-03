@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import it.gssi.astra.metaeditor.common.canvas.ContainerCanvas?>
+
+<fx:root type="TabPane" xmlns:fx="http://javafx.com/fxml" >
+  		
+</fx:root>

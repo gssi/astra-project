@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.gssi.astra</groupId>
+		<artifactId>astra-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>astra-project-[%=configuration.name%]</artifactId>
+
+	<dependencies>
+		[%=out.startPreserve("<!--","-->","dependencies", true)%]
+		<!--Dependencies Custom-->
+		[%=out.stopPreserve()%]
+		<dependency>
+			<groupId>it.gssi.astra</groupId>
+			<artifactId>astra-project-metamodel</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>it.gssi.astra</groupId>
+			<artifactId>astra-project-metaeditor</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<properties>
+	   <timestamp>${maven.build.timestamp}</timestamp>
+	   <maven.build.timestamp.format>ddMMyy-HHmm</maven.build.timestamp.format>
+	</properties>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.5</version>
+				<configuration>
+					<mainClass>it.gssi.astra.editors.[%=configuration.name.firstToLowerCase()%].[%=configuration.name.firstToUpperCase()%]AppMain</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>it.gssi.astra.editors.[%=configuration.name.firstToLowerCase()%].[%=configuration.name.firstToUpperCase()%]AppMain</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-shade-plugin</artifactId>
+		      <version>3.2.4</version>
+		      <executions>
+		        <execution>
+		          <phase>package</phase>
+		          <goals>
+		        	<goal>shade</goal>
+		          </goals>
+		          <configuration>
+		          	<finalName>[%=configuration.name.firstToUpperCase()%]_${timestamp}</finalName>
+				  	<createDependencyReducedPom>false</createDependencyReducedPom>
+		          	<filters>
+				        <filter>
+				            <artifact>*:*</artifact>
+				            <excludes>
+				                <exclude>META-INF/*.SF</exclude>
+				                <exclude>META-INF/*.DSA</exclude>
+				                <exclude>META-INF/*.RSA</exclude>
+								<exclude>module-info.class</exclude>
+				            </excludes>
+				        </filter>
+				    </filters>
+			        <transformers>
+			        	<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+		                  <mainClass>it.gssi.astra.editors.[%=configuration.name.firstToLowerCase()%].[%=configuration.name.firstToUpperCase()%]AppMain</mainClass>
+		                </transformer>
+			          <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			            <resource>plugin.properties</resource>
+			          </transformer>
+			        </transformers>
+		          </configuration>
+		        </execution>
+		      </executions>
+		    </plugin>
+		</plugins>
+	</build>
+</project>

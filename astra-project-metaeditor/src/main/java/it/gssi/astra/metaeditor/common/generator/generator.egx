@@ -1,0 +1,172 @@
+import "utility.eol";
+
+pre{
+	var rootClass = conf.allInstances().get(0).rootElement;
+	
+	var title = conf.allInstances().get(0).name.firstToLowerCase();	
+	
+	var editorName = conf.allInstances().get(0).name.firstToLowerCase();
+	
+}
+
+
+
+
+
+rule CreatePom
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title
+		}
+		
+		template: "pom.egl"
+		
+	    target: "../../../../../../../../../../astra-project-"+editorName+"/pom.xml"
+}
+
+rule CreateProperties
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		
+		template: "mavenProperties.egl"
+		
+	    target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/resources/"+editorName+".properties"
+}
+
+rule CreateMainEvl
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		parameters : Map{
+		  		"RootClass" = rootClass
+		}
+		
+		template: "evlMainTemplate.egl"
+		
+	    target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/resources/epsilon/evl/_"+configuration.modelFileExtension+"Main.evl"
+}
+
+rule CreateEvl
+	transform class: ermesMetamodel!EClass {
+		
+		template: "evlMetaclassTemplate.egl"
+		
+	    target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/resources/epsilon/evl/"+class.name+"Validator.evl"
+}
+
+rule CreateEol
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		
+		template: "eolTemplate.egl"
+		
+	    target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/resources/epsilon/"+configuration.modelFileExtension+"Setting.eol"
+}
+
+/*rule CreatePlugingProperties
+	transform configuration: MetaEditorConfiguration {
+		
+		
+		template: "plugin.egl"
+		
+	    target: "../../../../../../../../../../../astra-project-"+editorName+"/src/main/resources/plugin.properties"
+}*/
+
+rule CreateMain
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title
+		}
+		
+		template: "main.egl"
+		
+		target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/"+editorName+".java"
+	
+
+	}
+	
+rule CreateLayout
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title,
+		  		"confInstanceRoot" = conf,
+		  		"confBaseFolder" = confBaseFolder,
+		  		"srcBasePath" = srcBasePath
+		}
+		
+		template: "layout.egl"
+		
+		target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/Layout.java"
+	
+
+	}
+
+rule CreateMainApp
+	transform configuration: conf!MetaEditorConfiguration {
+		
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title
+		}
+		
+		template: "launchApplication.egl"
+		
+		target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/"+editorName+"AppMain.java"
+	
+
+	}
+	
+
+/*rule CreatePalette
+	transform configuration: conf!MetaEditorConfiguration{
+	
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title
+		}
+		
+		template: "palette.egl"
+		
+		target: "../../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/utility/PaletteImpl.java"
+	
+
+	}*/
+	
+
+rule GeneratePresentation
+	transform graphElement: conf!GraphicalElement{
+	
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title,
+		  		"conf" = conf.allInstances().get(0)
+		}
+		
+		
+		template: "presentation.egl"
+	
+		target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/presentation/" + graphElement.name +"FX.java"
+		
+		
+	}
+	
+rule GenerateRootProperties
+	transform configuration: conf!MetaEditorConfiguration{
+	
+		parameters : Map{
+		  		"RootClass" = rootClass,
+		  		"package" = title,
+		  		"conf" = conf.allInstances().get(0)
+		}
+		
+		template: "rootFX.egl"
+		
+		target: "../../../../../../../../../../astra-project-"+editorName+"/src/main/java/it/gssi/astra/schedulerTask/editors/"+title+"/presentation/_" + rootClass.name + ".java"
+	
+
+	}

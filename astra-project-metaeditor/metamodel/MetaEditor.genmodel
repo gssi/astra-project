@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ermes-project-metaeditor/src/main/java" modelPluginID="ermes-project-metaeditor"
+    modelName="MetaEditor" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editorPluginID="ermes-project-metaeditor.editor" operationReflection="true" importOrganizing="true">
+  <foreignModel>MetaEditor.ecore</foreignModel>
+  <genPackages prefix="MetaEditor" disposableProviderFactory="true" ecorePackage="MetaEditor.ecore#/">
+    <nestedGenPackages prefix="MetaEditorConfiguration" disposableProviderFactory="true"
+        ecorePackage="MetaEditor.ecore#//MetaEditorConfiguration">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition">
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/DEFAULT"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT45"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT90"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT135"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT180"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT225"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT270"/>
+        <genEnumLiterals ecoreEnumLiteral="MetaEditor.ecore#//MetaEditorConfiguration/RotationPosition/ROT315"/>
+      </genEnums>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/NamedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/NamedElement/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/UneditableFeaturesElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/UneditableFeaturesElement/uneditableFeatures"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/rootElement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/graphicalElements"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/initCanvasWidth"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/initCanvasHeight"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/modelFileExtension"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/MetaEditorConfiguration/editorIconPath"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/element"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/fxmlPath"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/anchorPoints"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/iconPath"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/nameAttribute"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/GraphicalElement/containmentRef"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/AnchorPoint">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/AnchorPoint/ref"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorConfiguration/AnchorPoint/connectableAnchorPoints"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/AnchorPoint/fullAnchorPoint"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="MetaEditor.ecore#//MetaEditorConfiguration/ConfigurationOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/ConfigurationOptions/bendableElement"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/ConfigurationOptions/rotationPositions"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/ConfigurationOptions/selectWithParent"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorConfiguration/ConfigurationOptions/zIndexDefault"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="MetaEditorPersistence" disposableProviderFactory="true"
+        ecorePackage="MetaEditor.ecore#//MetaEditorPersistence">
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/MetaEditorPersistence">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorPersistence/MetaEditorPersistence/elementPositions"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/MetaEditorPersistence/canvasWidth"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/MetaEditorPersistence/canvasHeight"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorPersistence/MetaEditorPersistence/canvasSections"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/ElementPosition">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorPersistence/ElementPosition/element"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/ElementPosition/visible"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/ElementPosition/magnetizable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/ElementPosition/pinned"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/BendableElementPosition">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaEditor.ecore#//MetaEditorPersistence/BendableElementPosition/bendPoints"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/RotationPosition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/RotationPosition/rotationPosition"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/BendPoint"/>
+      <genClasses image="false" ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/Position">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/Position/x"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/Position/y"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/Position/z"/>
+      </genClasses>
+      <genClasses ecoreClass="MetaEditor.ecore#//MetaEditorPersistence/CanvasSection">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/CanvasSection/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/CanvasSection/sectionWidth"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaEditor.ecore#//MetaEditorPersistence/CanvasSection/sectionHeight"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

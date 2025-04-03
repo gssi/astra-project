@@ -1,0 +1,6 @@
+context Scheduler {
+    constraint TotalCpuUsageBelowThreshold {
+        check: self.totalCpuTime() <= self.scanCycleTime * 0.75
+        message: "The total CPU usage exceeds 75% of the scan cycle."
+    }
+}

@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ <!-- <groupId>astra-project-solver</groupId>-->
+
+  <parent>
+		<groupId>it.gssi.astra</groupId>
+		<artifactId>astra-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+  <artifactId>astra-project-solver</artifactId>
+  <name>astra-project-solver</name>
+  
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--  <javafx.version>15.0.1</javafx.version>-->
+		<javafx.version>17.0.2</javafx.version>
+		<epsilon.version>2.4.0</epsilon.version>
+	</properties>
+  
+  	
+	<dependencies>
+		
+		<dependency>
+			<groupId>it.gssi.astra</groupId>
+			<artifactId>astra-project-metamodel</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-math3</artifactId>
+    <version>3.6.1</version> <!-- Use the latest version available -->
+</dependency>
+
+		
+		<!--  EPSILON START -->
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.etl.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>5.2.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>5.2.3</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.ecl.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.eml.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.egl.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.evl.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.eol.engine</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.emc.plainxml</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.epsilon</groupId>
+			<artifactId>org.eclipse.epsilon.emc.emf</artifactId>
+			<version>${epsilon.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.osgi.service</groupId>
+					<artifactId>org.osgi.service.prefs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		
+		<!--  EPSILON END -->
+  </dependencies>
+</project>

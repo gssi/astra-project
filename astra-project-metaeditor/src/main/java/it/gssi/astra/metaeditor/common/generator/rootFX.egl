@@ -1,0 +1,281 @@
+[%
+import "utility.eol";
+%]
+/*
+*@Generated
+*/
+package it.gssi.astra.schedulerTask.editors.[%=package%].presentation;
+
+import [%=RootClass.ePackage.name%].*;
+import it.gssi.astra.metaeditor.common.LayoutScene;
+import it.gssi.astra.metaeditor.common.property.BackedCustomPropertyItem;
+import it.gssi.astra.metaeditor.common.root.RootFX;
+
+import org.controlsfx.control.PropertySheet.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+
+[%=out.startPreserve("/*","*/","import", true)%]
+//Import Custom
+[%=out.stopPreserve()%]
+
+public class _[%=RootClass.name%] extends RootFX {
+	
+	static [%=RootClass.name%] root;
+	
+	public void populatePropertyView() {
+	
+		super.populatePropertyView();
+	
+		root = ([%=RootClass.name%]) LayoutScene.getInstance().getResource().getAllContents().next();
+		TreeIterator<?> iterator;
+		
+		ObservableList<Item> properties = FXCollections.observableArrayList();
+		
+	[%for (localRef in RootClass.getEAllReferences()) {%]
+		[%if (not(localRef.containment)) {%]
+			[%if (localRef.getUpperBound() == 1) {%]
+		ReferencePropertyValue emptyProperty = ReferencePropertyValue.createEmptyProperty();
+			[%breakAll;%]
+			[%}%]
+		[%}%]
+	[%}%]
+
+
+	[%for (feature in RootClass.getEAllStructuralFeatures()) {%]
+		[%if (feature.eClass().name == "EAttribute") {%]
+			[% var att : Any = feature;%]
+			[%if (att.getEType().name == "EBoolean") {%]
+		BackedCustomPropertyItem [%=att.name.firstToUpperCase()%]_item = new BackedCustomPropertyItem(root, "Properties", "[%=att.name%]", [%=att.isEditable(conf)%]);
+		properties.add([%=att.name.firstToUpperCase()%]_item);
+		
+			[%}else{%]
+				[%if (att.getEType().name == "EString") {%]
+		BackedCustomPropertyItem [%=att.name.firstToUpperCase()%]_item = new BackedCustomPropertyItem(root, "Properties", "[%=att.name%]", [%=att.isEditable(conf)%]);
+		properties.add([%=att.name.firstToUpperCase()%]_item);
+		
+				[%}else{%]
+					[%if (att.getEType().class.getSimpleName() ==  "EEnumImpl" and att.getUpperBound() == -1) {%]
+					
+					
+					
+	    ObservableList<Option> allList[%=att.name.firstToUpperCase()%]= FXCollections.observableArrayList();
+		ObservableList<Option> list[%=att.name.firstToUpperCase()%]Selected =FXCollections.observableArrayList();
+					
+		[%=att.getEType().name%].VALUES.forEach(item->{
+			allList[%=att.name.firstToUpperCase()%].add(new EnumeratorPropertyValue(item.getName(), item));
+		});
+		
+		for ([%=att.getEType().name%] element: root.get[%=att.name.firstToUpperCase()%]()) {
+				for (Option enumeratorPropertyValue : allList[%=att.name.firstToUpperCase()%]) {
+					if (((EnumeratorPropertyValue)enumeratorPropertyValue).instance == element)
+						list[%=att.name.firstToUpperCase()%]Selected.add(enumeratorPropertyValue);
+				}
+		}
+		
+		BackedCustomPropertyItem [%=att.name.firstToUpperCase()%]_item = new BackedCustomPropertyItem(root, "Properties", "[%=att.name%]", allList[%=att.name.firstToUpperCase()%], true);
+		properties.add([%=att.name.firstToUpperCase()%]_item);
+		
+
+					[%} else {%]
+		BackedCustomPropertyItem [%=att.name.firstToUpperCase()%]_item = new BackedCustomPropertyItem(root, "Properties", "[%=att.name%]", [%=att.isEditable(conf)%]);
+		properties.add([%=att.name.firstToUpperCase()%]_item);
+					
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (feature.eClass().name == "EReference") {%]
+			[% var localRef : Any = feature;%]
+			[%if (not(localRef.containment)) {%]
+				[%if (localRef.getUpperBound() == 1) {%]
+				
+				
+		ObservableList<EObject> [%=localRef.getName().firstToUpperCase()%]_options = FXCollections.observableArrayList();
+		
+		iterator = LayoutScene.getInstance().getResource().getAllContents();
+		while ( iterator.hasNext ( )) {
+			EObject obj = (EObject) iterator.next();
+			
+				[%for (graphElement in getSubClass(localRef.getEType(),RootClass)) { %]
+			if(obj instanceof [%=graphElement.element.name%]){
+				[%=localRef.getName().firstToUpperCase()%]_options.add(([%=graphElement.element.name%])obj);
+			}
+				[%}%]
+		}
+					
+		BackedCustomPropertyItem [%=localRef.getName().firstToUpperCase()%]_item = new BackedCustomPropertyItem(root, "Properties", "[%=localRef.getName()%]", [%=localRef.getName().firstToUpperCase()%]_options, [%=localRef.isEditable(conf)%]);
+		properties.add([%=localRef.getName().firstToUpperCase()%]_item);
+					
+				[%}%]
+				
+				[%if (localRef.getUpperBound() == -1) {%]		
+		ObservableList<Option> all[%=localRef.getName().firstToUpperCase()%] = FXCollections.observableArrayList();
+		ObservableList<Option> [%=localRef.getName()%]Selected =FXCollections.observableArrayList();
+					
+		iterator = LayoutScene.getInstance().getResource().getAllContents();
+		while (iterator.hasNext()) {
+			EObject obj = (EObject) iterator.next();
+			
+				[%for (graphElement in getSubClass(localRef.getEType(),RootClass)) { %]
+			if(obj instanceof [%=graphElement.element.name%]){
+				all[%=localRef.getName().firstToUpperCase()%].add(new ReferencePropertyValue((([%=graphElement.element.name%])obj).get[%=graphElement.nameAttribute.name.firstToUpperCase()%](),obj));
+			}
+				[%}%]
+		}
+		
+		for ([%=localRef.getEType().getName%] element: root.get[%=localRef.getName().firstToUpperCase()%]()) {
+			for (Option referencePropertyValue : all[%=localRef.getName().firstToUpperCase()%]) {
+				if (((ReferencePropertyValue)referencePropertyValue).instance == element)
+					[%=localRef.getName()%]Selected.add(referencePropertyValue);
+				}
+			}
+			
+		BackedCustomPropertyItem [%=localRef.getName().firstToUpperCase()%]_check_combo_box_item = new BackedCustomPropertyItem(root, "Properties", "[%=localRef.getName()%]", all[%=localRef.getName().firstToUpperCase()%], [%=localRef.isEditable(conf)%]);
+		properties.add([%=localRef.getName().firstToUpperCase()%]_check_combo_box_item);
+				[%}%]
+			[%}%]
+		[%}%]
+	[%}%]
+	
+		[%=out.startPreserve("/*","*/","custom_properties", true)%]
+		//Custom properties
+		[%=out.stopPreserve()%]
+	
+		// Update PropertySheet view
+		LayoutScene.getInstance().propertySheet.getItems().clear();
+		LayoutScene.getInstance().propertySheet.getItems().addAll(properties);
+
+	}
+
+	/****** Generic attributes ******/
+	
+	[%for (sClass in RootClass.getESuperTypes()) {%]
+		[%for (att in sClass.getEAllAttributes()) {%]
+			[%if (att.getUpperBound() == 1) {%]
+			[%if (att.getEType().name ==  "EInt") {%]
+	public static void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+			[%}else{%]
+				[%if (att.getEType().name ==  "EBoolean") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+				[%}else{%]
+					[%if (att.getEType().name ==  "EString") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+					[%}else{%]
+						[%if (att.getEType().name ==  "EDouble") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+						[%}else{%]
+	 						[%if (att.getEType().isKindOf(EEnum)) {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+							[%}else{%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+				
+							[%}%]
+						[%}%]
+					[%}%]
+				[%}%]
+			[%}%]
+		[%=out.startPreserve("/*","*/",att.name+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+	[%}%]
+		[%}%]
+	[%}%]
+	
+	
+		
+	/****** Specific attributes ******/
+	
+	[%for (att in RootClass.getEAttributes())  { %]
+	[%if (att.getUpperBound() == 1) {%]
+		[%if (att.getEType().name == "EInt") {%]
+	public static void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+				
+		[%}else{%]
+			[%if (att.getEType().name == "EString") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+			[%}else{%]
+				[%if (att.getEType().name == "EDouble") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+				[%}else{%]
+					[%if (att.getEType().name == "EBoolean") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+					[%}else{%]
+						[%if (att.getEType().isKindOf(EEnum)) {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+						[%}else{%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+
+						[%}%]
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		[%=out.startPreserve("/*","*/",att.name+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+	[%}%]
+	[%}%]
+		
+	[%for (att in RootClass.getEAllAttributes())  { %]
+	[%if (att.getUpperBound() == -1) {%]
+		[%if (att.getEType().isKindOf(EEnum)) {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%}%]
+		[%=out.startPreserve("/*","*/",att.name+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+	[%}%]
+	[%}%]
+		
+	/****** references (upperBound=1) ******/
+	
+	[%for (localRef in RootClass.getEAllReferences()) {%]
+	[%if (not(localRef.containment)) {%]
+		[%if (localRef.getUpperBound() == 1) {%]
+	public static void on[%=localRef.getName().firstToUpperCase()%]Changed(Object value) {
+			
+		[%=out.startPreserve("/*","*/",localRef.getName()+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}		
+		[%}%]
+	[%}%]
+	[%}%]
+		
+		
+		
+	/******* references (upperBound=-1) ********/
+	
+	[%for (localRef in RootClass.getEAllReferences()) {%]
+	[%if (not(localRef.containment)) {%]
+		[%if (localRef.getUpperBound() == -1) {%]
+	public static void on[%=localRef.getName().firstToUpperCase()%]Changed(Object value) {
+
+		[%=out.startPreserve("/*","*/",localRef.getName()+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+		[%}%]
+	[%}%]
+	[%}%]
+	
+	[%=out.startPreserve("/*","*/","behavior", true)%]
+	//Behavior Custom
+	[%=out.stopPreserve()%]	
+}

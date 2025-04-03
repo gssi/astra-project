@@ -1,0 +1,158 @@
+
+//return Root Class
+operation EPackage getRootClass(): EClass {
+	for (eClassifier in self.getEClassifiers()) {
+			if(eClassifier.isKindOf(EClass)) {
+				for (annotation in eClassifier.getEAnnotations()) {
+					if(annotation.getSource().toString().equals("Root")) {
+						return eClassifier;
+					}
+				}
+			}
+		}
+}
+
+operation getGraphicalElementName(configuration: MetaEditorConfiguration, targetElementType: Any ): String {
+	var result : String;
+	
+	for (graph_element in configuration.graphicalElements) {
+		if (graph_element.element == targetElementType) {
+			return graph_element.name;
+		}
+	}
+	return result;
+}
+
+operation EStructuralFeature isEditable(uneditableFeaturesElement: UneditableFeaturesElement): Boolean {
+	return not self.isVolatile() and not self.isDerived() and not uneditableFeaturesElement.uneditableFeatures.contains(self);
+}
+
+operation getListClasses(): Sequence {
+	var listClass : Sequence;
+	for (ref in rootClass.getEReferences()) { 
+		listClass.add(ref.getEType());
+	}
+	return listClass;
+}
+
+operation GraphicalElement getAnchorRefs(): Sequence {
+	var listRefs : Sequence;
+	for (anchor in self.anchorPoints) {
+		listRefs.add(anchor.ref);
+	}
+	return listRefs;
+}
+
+operation getNameAttribute(configuration: MetaEditorConfiguration, targetElementType: Any ): String {
+	var nameAttribute : String;
+	
+	for (graph_element in configuration.graphicalElements) {
+		if (graph_element.element == targetElementType or graph_element.element.getEAllSuperTypes().contains(targetElementType)) {
+			return graph_element.nameAttribute.name.firstToUpperCase();
+		}
+	}
+	return nameAttribute;
+}
+
+operation checkChildrenContained(element: Any): String {
+	var result : String;
+	
+	for (localRef in element.getEAllReferences()) {
+		if (localRef.containment) {
+					
+			result += 
+"
+if(((" + element.name + ")model_" + element.name + ").get" + localRef.name.firstToUpperCase() + "() != null) {
+		
+				" + localRef.getEType().getName.firstToUpperCase() + " model_" + localRef.getEType().getName.firstToUpperCase() + " = (( " + element.name + ")model_" + element.name + ").get" + localRef.name.firstToUpperCase() + "();
+				
+				ElementPosition elementPosition"+localRef.getEType().getName.firstToUpperCase()+" = map.get( model_" + localRef.getEType().getName.firstToUpperCase()+");
+				if(elementPosition"+localRef.getEType().getName.firstToUpperCase()+" == null) {
+					elementPosition"+localRef.getEType().getName.firstToUpperCase()+" = MetaEditorPersistenceFactory.eINSTANCE.createElementPosition();
+					elementPosition"+localRef.getEType().getName.firstToUpperCase()+".setElement(model_" + localRef.getEType().getName.firstToUpperCase()+");
+					LayoutScene.getInstance().getRootPersistence().getElementPositions().add(elementPosition"+localRef.getEType().getName.firstToUpperCase()+");
+				}
+				
+				" +	localRef.getEType().getName.firstToUpperCase() + "FX " + localRef.name  + "_node = new " + localRef.getEType().getName.firstToUpperCase() + "FX(model_" + localRef.getEType().getName.firstToUpperCase() + ",elementPosition"+localRef.getEType().getName.firstToUpperCase()+");
+				
+				DraggableNode " + localRef.name  + "_dnode = new DraggableNode(" + localRef.name  + "_node, elementPosition"+localRef.getEType().getName.firstToUpperCase()+");
+				
+				Platform.runLater( ()->{
+					canvas.getChildren().add(" + localRef.name  + "_dnode);
+					" + localRef.name  + "_node.initialization();
+					" + localRef.name  + "_dnode.synchronizePosition(" + localRef.name  + "_node, (ElementPosition) " + localRef.name  + "_node.elementPos);
+				});
+				waitForInitialization();
+	" + checkChildrenContained(localRef.getEType()) + "
+}";
+		}
+	}
+	
+	return result;
+}
+
+operation getGraphicalElement(eClass: Any): Any{
+
+	for (graphicalElement in conf.graphicalElements){
+			if(eClass.name == graphicalElement.element.name){
+				return graphicalElement;
+			}
+	}
+	
+	return null;
+}
+
+operation getSubClass(class: Any, rootClass: Any): Sequence{
+	var result :Sequence;
+	for(eClassifier in rootClass.getEPackage().getEClassifiers()){
+		if(eClassifier.isKindOf(EClass)) {
+			if(class.isSuperTypeOf(eClassifier)){
+				if(getGraphicalElement(eClassifier) <> null){
+					result.add(getGraphicalElement(eClassifier));
+				}
+			}
+		}
+	}
+	return result;
+}
+
+operation GraphicalElement getRootContainmentRef(rootClass: Any): EReference {
+	
+	for(ref in self.containmentRef) {
+		if (ref.getEContainingClass() == rootClass)
+			return ref;
+	}
+	
+	return null;
+}
+
+operation GraphicalElement isUsedByRootChild(rootClass: Any): Boolean {
+	
+	for(ref in self.containmentRef) {
+		if (ref.getEContainingClass() == rootClass)
+			return true;
+	}
+	
+	return false;
+}
+
+operation GraphicalElement hasChild(): Boolean {
+	
+	for(ref in self.element.getEAllReferences()) {
+		if (ref.containment)
+			return true;
+	}
+	
+	return false;
+}
+
+operation GraphicalElement getContainmentRefsNames(): Sequence {
+	
+	var result : Sequence;
+	
+	for(ref in self.containmentRef) {
+		result.add(ref.name);
+	}
+	
+	return result;
+}

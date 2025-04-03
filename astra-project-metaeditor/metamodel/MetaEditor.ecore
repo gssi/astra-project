@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MetaEditor" nsURI="https://ermes-project.org/MetaEditor" nsPrefix="MetaEditor">
+  <eSubpackages name="MetaEditorConfiguration" nsURI="https://ermes-project.org/MetaEditorConfiguration"
+      nsPrefix="MetaEditorConfiguration">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Questo package racchiude tutti gli elementi (meclassi/attributi/reference) necessari per la definizione della configurazione di un editor specifico. La configurazione definita sarà input del processo di generazione dell'editor specifico mediante il processo di generazione del metaeditor."/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse astratta che viene estesa dalle varie metaclassi del metamodello di configurazione che necessitano (ciascuna per ragioni diverse) di un attributo &quot;name&quot; di tipo stringa."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo stringa ereditato dalle varie sottoclassi."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UneditableFeaturesElement" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse astratta che viene estesa dalle varie metaclassi del metamodello di configurazione per rendere non editabili delle structural features."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uneditableFeatures" upperBound="-1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Insieme di puntatori a structural features del metamodello di dominio che non si vuole poter editare all'interno della property view dell'editor generato. Queste features saranno visualizzate ma non editabili. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MetaEditorConfiguration" eSuperTypes="#//MetaEditorConfiguration/NamedElement #//MetaEditorConfiguration/UneditableFeaturesElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Root della configurazione di un editor da generare con il processo del metaeditor. Una istanza di questa classe punterà a tutte le definizioni dei graphical element dell'editor. "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rootElement" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alla classe root del metamodello di dominio. La root class del metamodello di dominio definisce l'istanza &quot;container&quot; associata al canvas, che conterrà tutti i graphical element che verranno istanziati mediante l'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="graphicalElements" upperBound="-1"
+          eType="#//MetaEditorConfiguration/GraphicalElement" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alle istanze di graphical element definiti dal progettista di un editor specifico. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="initCanvasWidth" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1000">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Valore della larghezza in pixel del canvas iniziale di un nuovo modello creato.  "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="initCanvasHeight" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="500">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Valore dell'altezza in pixel del canvas iniziale di un nuovo modello creato.  "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelFileExtension" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="xmi">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Estensione del file persistence che l'editor salva per fare persistenza delle istanze modellate dall'utente dell'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="editorIconPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Path dell'icona dell'eseguibile dell'editor generato."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GraphicalElement" eSuperTypes="#//MetaEditorConfiguration/NamedElement #//MetaEditorConfiguration/UneditableFeaturesElement #//MetaEditorConfiguration/ConfigurationOptions">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse per la definizione dei graphical element che faranno parte dell'editor generato. L'insieme dei graphical element definiscono la sintassi concreta del linguaggio."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alla metaclasse del metamodello di dominio. Questo puntatore rappresenta il reale binding fra la sintassi astratta e la sintassi concreta, ovvero il binding fra la metaclasse di dominio e il graphical element dell'editor. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fxmlPath" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="TBD">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Path del file fxml associato ad uno specifico graphical element. Questo fxml definisce la rappresentazione di default in fase di inizializzazione del graphical element. La rappresentazione di default potrà poi essere modificata mediante codice custom da inserire nel codice generato dal processo di generazione dell'editor specifico. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="anchorPoints" upperBound="-1"
+          eType="#//MetaEditorConfiguration/AnchorPoint" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alla definizione degli anchor point associati ad un particolare graphical element. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="iconPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Path dell'icona in palette del pulsante per la creazione di nuove istanze dello specifico graphical element mediante l'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="nameAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore all'attributo della metaclasse di dominio che si vuole utilizzare come label identificativa delle istanze."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="containmentRef" lowerBound="1"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alla reference del metamodello di dominio che rappresenta il &quot;container&quot; delle istanze. Questa reference può avere come source il domain root (e quindi le istanze saranno contenute direttamente all'interno del canvas) oppure può avere come source un'altra domain class, e quindi le istanze saranno &quot;child&quot; delle istanze di quella domain class. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AnchorPoint" eSuperTypes="#//MetaEditorConfiguration/NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse per la definizione degli anchor point da associare ad un graphical element. Gli anchor point devono avere un corrispettivo tag (associato by-name) all'interno dell'fxml del graphical element."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Se uguale a null, l'anchor point funge da solo magnete a livello grafico. Se invece questo puntatore viene associato ad una ref del domain element del graphical element, insieme alla magnetizzazione grafica delle istanze del graphical element, viene anche settata la relativa ref dell'istanza."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectableAnchorPoints"
+          upperBound="-1" eType="#//MetaEditorConfiguration/AnchorPoint">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Definisce l'insieme degli anchor point che semanticamente possono essere connessi/magnetizzati allo specifico anchor point."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullAnchorPoint" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Se true, l'anchor point definito non è un singolo punto del graphical element, ma lo stesso graphical element nel suo insieme è interamente un anchor point."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConfigurationOptions" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse astratta che raggruppa alcune opzioni di configurazione di un graphical element."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendableElement" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Se true, il graphical element viene creato come &quot;bendable&quot; element, ovvero una linea/segmento &quot;spezzata&quot; a cui possono essere aggiunti bendable point. Viene assunto che per i graphical element che sono di tipo bendable, l'fxml associato è tipo polyline in JavaFX."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rotationPositions" upperBound="-1"
+          eType="#//MetaEditorConfiguration/RotationPosition">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo che serve per definire i graphical element &quot;ruotabili&quot;. L'insieme dei valori puntati da questo attributo definiscono l'insieme discreto dei gradi di rotazione che il graphical element può assumere."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="selectWithParent" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Se true, il graphical element verrà selezionato e spostato insieme al graphical element padre. L'utente può eventualmente deselezionare il figlio durante l'editing nel caso voglia spostare soltando il padre. Il true di questo attributo descrive soltanto il comportamento di default: ovvero se selezionare il figlio insieme al padre, oppure lasciare la selezione indipendente."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="zIndexDefault" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Serve per inizializzare e resettare ad un determinato valore la coordinata Z di tutte le istanze di uno specifico tipo di GraphicalElement."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="RotationPosition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Enumerator che rappresenta le varie posizioni di rotazione previste per i graphical element definiti come &quot;ruotabili&quot;. I literal di questo enumerator definiscono ciascuno i gradi di rotazione (da 0 a 360)."/>
+      </eAnnotations>
+      <eLiterals name="DEFAULT" literal="DEFAULT"/>
+      <eLiterals name="ROT45" value="45"/>
+      <eLiterals name="ROT90" value="90"/>
+      <eLiterals name="ROT135" value="135"/>
+      <eLiterals name="ROT180" value="180"/>
+      <eLiterals name="ROT225" value="225"/>
+      <eLiterals name="ROT270" value="270"/>
+      <eLiterals name="ROT315" value="315"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="MetaEditorPersistence" nsURI="https://ermes-project.org/MetaEditorPersistence"
+      nsPrefix="MetaEditorPersistence">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Questo package racchiude tutti gli elementi (meclassi/attributi/reference) necessari al meccanismo di persistenza del layout/posizione delle istanze create con uno specifico editor generato con il processo di generazione del metaeditor. Nello specifico, il file di persistenza del layout, sarà un xmi istanza di questo metamodello."/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="MetaEditorPersistence">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Root della persistenza di una istanza (modello) creata con un editor generato con il processo del metaeditor. Una istanza di questa classe conterrà tutte le informazioni di persistenza dei graphical element definiti nel file di configurazione (che è conforme al metamodello Configuration presente nel relativo package)."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elementPositions" upperBound="-1"
+          eType="#//MetaEditorPersistence/ElementPosition" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore a tutti gli element position, ovvero agli oggetti di persistenza delle istanze dei graphical element istanziate mediante l'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="canvasWidth" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo per la memorizzazione della larghezza del canvas, che l'utente può modificare mediante il relativo menù accessibile dal menu degli strumenti dell'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="canvasHeight" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo per la memorizzazione dell'altezza del canvas, che l'utente può modificare mediante il relativo menù accessibile dal menu degli strumenti dell'editor."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="canvasSections" upperBound="-1"
+          eType="#//MetaEditorPersistence/CanvasSection" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore alle sezioni (sections) in cui è possibile suddividere il canvas."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementPosition" eSuperTypes="#//MetaEditorPersistence/Position #//MetaEditorPersistence/BendableElementPosition #//MetaEditorPersistence/RotationPosition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse che definisce gli attributi di un element position."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore all'istanza di dominio di un graphical element: l'istanza di element position serializza quindi le caratteristiche di layout e funzionalità di editing di una particolare istanza di un graphical element."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo che permette la memorizzazione della visibilità di una istanza: se true l'elemento è visibile, se è false l'elemento esiste ma non è visibile nel canvas."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="magnetizable" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo che permette la memorizzazione della magnetizzabilità di una istanza: se true l'elemento è magnetizzabile (agli oggetti a cui è semanticamente magnetizzabile), altrimenti se false per quell'elemento è disabilitata la funzione di magnete."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="pinned" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Attributo che permette la memorizzazione della funzionalità di pinning di una istanza: se true l'elemento è &quot;pinnato&quot; (ovvero bloccato in una posizione non modificabile del canvas), altrimenti se false quell'elemento è regolarmente possibile spostarlo mediante il classico drag and drop."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BendableElementPosition" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Questa metaclasse è necessaria per clusterizzare in un unico contenitore la posizione di tutti i bend points di un graphical element che sia di tipo bendable. Se il graphical element non è di tipo bendable, non ha bend points."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="bendPoints" upperBound="-1"
+          eType="#//MetaEditorPersistence/BendPoint" containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Puntatore a tutti i bend points di un element position relativo a un graphical element di tipo bendable."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RotationPosition" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse necessaria per serializzare la posizione di rotazione degli elementi che sono stati definiti come &quot;ruotabili&quot;. "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rotationPosition" eType="#//MetaEditorConfiguration/RotationPosition">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Memorizza la posizione di rotazione dell'oggetto. Gli elementi non ruotabili, invece, mantengono settata a null la posizione di rotazione."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BendPoint" eSuperTypes="#//MetaEditorPersistence/Position">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse per serializzare la posizione di un bend point in termini delle sue coordinate."/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Position" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metaclasse che rappresenta un set di coordinate di una posizione, in termine di X, Y e Z-index. Questa metaclasse è ereditata sia da BendPoint (per la posizione di un bend point) sia da ElementPosition (per la posizione di una istanza di graphical element)."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Distanza in pixel dal margine sinistro del canvas lungo l'asse delle X."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Distanza in pixel dal margine in alto del canvas lungo l'asse delle Y."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="z" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Livello dello z-Index. A ciascuna istanza di graphical element è associato un &quot;livello&quot;, ovvero un valore di z-Index, che mediante l'editor può essere incrementato e decrementato. Questo attributo serializza il livello attuale dello z-Index per una determinata istanza."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CanvasSection">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Il canvas può essere suddiviso in sezioni. Una sezione è quindi una sotto-parte di un canvas."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="TBD">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Nome della sezione."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sectionWidth" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Larghezza della sezione."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sectionHeight" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Altezza della sezione."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

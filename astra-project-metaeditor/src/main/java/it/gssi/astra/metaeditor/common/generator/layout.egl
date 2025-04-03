@@ -1,0 +1,98 @@
+/*
+*@Generated
+*/
+package it.gssi.astra.schedulerTask.editors.[%=package%];
+
+import [%=RootClass.ePackage.name%].[%=RootClass.ePackage.name.firstToUpperCase()%]Package;
+import it.gssi.astra.metaeditor.common.LayoutScene;
+import it.gssi.astra.metaeditor.common.palette.PaletteGesture;
+import it.gssi.astra.metaeditor.common.palette.PaletteImpl;
+import it.gssi.astra.schedulerTask.editors.[%=package%].presentation._[%=RootClass.name%];
+import it.gssi.astra.metaeditor.common.splashScreen.*;
+import it.gssi.astra.metaeditor.common.utility.Validate;
+import javafx.stage.Stage;
+import it.gssi.astra.metaeditor.common.dataManager.commands.CustomCommandStack;
+import it.gssi.astra.metaeditor.common.popup.Search;
+import it.gssi.astra.metaeditor.common.popup.Popup;
+import it.gssi.astra.metaeditor.common.canvas.ContainerCanvas;
+import it.gssi.astra.metaeditor.common.dataManager.fileManager.FileManagerImpl;
+import it.gssi.astra.metaeditor.common.menu.CustomMenu;
+
+[%=out.startPreserve("/*","*/","import", true)%]
+//Import Custom
+[%=out.stopPreserve()%]
+
+public class Layout extends LayoutScene {
+	
+	private static Layout layoutInstance;
+	
+	public static Layout getInstance () {
+		return layoutInstance;
+	}
+	
+	public Layout(Stage primaryStage) {
+	
+		this.primaryStage = primaryStage;
+		layoutInstance = this;
+		this.domainEPackage = [%=RootClass.ePackage.name.firstToUpperCase()%]Package.eINSTANCE;
+		this.srcBasePath = "[%=srcBasePath %]";
+		this.getResourceSet().getPackageRegistry().put(this.domainEPackage.getNsURI(), this.domainEPackage);
+		
+		final String confPlatformPath = "[%=confInstanceRoot.resource.uri %]";
+		final String confBaseFolder = "[%=confBaseFolder %]";
+		this.setConfInstanceRoot(confPlatformPath, confBaseFolder);
+		FileManagerImpl.getInstance().setFile_Extension(this.confInstanceRoot.getModelFileExtension());
+		this.setIcon(primaryStage, this.confInstanceRoot.getEditorIconPath());
+		
+		this.paletteInterface = new PaletteImpl();
+		LayoutScene.getInstance().rootFX = new _[%=RootClass.name%]();
+		this.paletteGesture = new PaletteGesture(this.paletteInterface, this);
+		this.paletteInterface.populatePalette(this.paletteGesture,this.getPalette());
+		
+		Search.setOption([%=RootClass.ePackage.name.firstToUpperCase()%]Package.eINSTANCE.get[%=RootClass.name%]());
+		
+		primaryStage.setOnCloseRequest(e -> {
+		
+			// Chiudere l'editor se non ci sono tab aperte
+			if(LayoutScene.getInstance().getWorkspace().getTabs().size()==0) {
+				return;
+			}
+			
+			//Controlla se qualche tab non è stata salvata
+			boolean saveNeeded = false;
+			for(ContainerCanvas canvas: LayoutScene.getInstance().getWorkspace().getAllContainerCanvas()) {
+				if(((CustomCommandStack) canvas.getEditingDomain().getCommandStack()).isSaveNeeded()) {
+					saveNeeded = true;
+					continue;
+				}
+			}
+			
+			if(saveNeeded) {
+				Boolean result = Popup.question("Salvataggio", "Vuoi salvare prima di chiudere l'editor?");
+					
+				if(result == null) {
+					//Annulla
+					e.consume();
+					return;
+				}
+				
+				if(result){
+					// Si, salva e chiudi
+					FileManagerImpl.getInstance().saveAll();
+				}
+			}
+		});
+		
+	[%=out.startPreserve("/*","*/","init", true)%]
+	//Init Custom
+	SplashScreenController splash = new SplashScreenController("[%=configuration.name.firstToUpperCase()%]");
+	primaryStage.show();
+	[%=out.stopPreserve()%]
+		
+	}
+	
+	[%=out.startPreserve("/*","*/","function", true)%]
+	//Function Custom
+	[%=out.stopPreserve()%]
+
+}

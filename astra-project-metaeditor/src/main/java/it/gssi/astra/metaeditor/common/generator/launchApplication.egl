@@ -1,0 +1,13 @@
+/*
+* Generated
+*/
+package it.gssi.astra.schedulerTask.editors.[%=package%];
+
+
+public class [%=configuration.name.firstToUpperCase()%]AppMain {
+	
+	public static void main(String[] args) {
+		[%=configuration.name.firstToUpperCase()%].main(args);
+	}
+
+}

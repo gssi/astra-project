@@ -1,0 +1,13 @@
+/* protected region customImport on begin */
+	//TODO 
+/* protected region customImport end */
+
+context SchedulerModel{
+/* protected region SchedulerModelConstraint on begin */
+	//TODO 
+/* protected region SchedulerModelConstraint end */
+}
+
+/* protected region customOperations on begin */
+	//TODO 
+/* protected region customOperations end */

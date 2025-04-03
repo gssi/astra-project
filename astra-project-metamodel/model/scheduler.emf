@@ -1,0 +1,37 @@
+@namespace(uri="gssi.astra.scheduler", prefix="gssi.astra.scheduler")
+package Scheduler;
+
+class SchedulerModel {
+	val TableTask[*] tableTask;
+}
+
+class TableTask extends NamedElement {
+	val Task[*] tasks;
+}
+
+class Task extends NamedElement {
+	attr int priority;
+	ref Task[*] following;
+	attr int[1] duration;
+	val ACT[+] acts;
+}
+
+class ACT extends NamedElement {
+	val Tick[1] start;
+	val Tick[1] end;
+	attr Period[1] period;
+}
+
+class Tick extends NamedElement {
+	attr int[1] Value = 0;
+}
+
+class NamedElement {
+	attr String name = "TBD";
+}
+
+enum Period {
+	TICK_INTO_TSLICE = 0;
+	TICK_INTO_SLICE_8_4 = 1;
+}
+

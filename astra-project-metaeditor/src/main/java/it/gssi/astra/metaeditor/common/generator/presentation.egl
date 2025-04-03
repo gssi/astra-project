@@ -1,0 +1,620 @@
+[%
+import "utility.eol";
+%]
+/*
+*@Generated
+*/
+package it.gssi.astra.schedulerTask.editors.[%=package%].presentation;
+
+import java.util.stream.IntStream;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.common.util.TreeIterator;
+import it.gssi.astra.metaeditor.common.ente.DraggableNode;
+
+import it.gssi.astra.metaeditor.common.property.ReferencePropertyValue;
+import it.gssi.astra.metaeditor.common.property.UnbackedCustomPropertyItem;
+import it.gssi.astra.metaeditor.common.treeView.CustomTreeItem;
+import it.gssi.astra.metaeditor.common.property.BackedCustomPropertyItem;
+import it.gssi.astra.metaeditor.common.property.EnumeratorPropertyValue;
+import it.gssi.astra.metaeditor.common.property.Option;
+
+import [%=RootClass.ePackage.name%].*;
+[%for (ePackage in RootClass.ePackage.getESubpackages()) {%]
+import [%=RootClass.ePackage.name%].[%=ePackage.name%].*;
+[%}%]
+
+import it.gssi.astra.metaeditor.common.LayoutScene;
+import it.gssi.astra.metaeditor.common.ente.Ente;
+[%if (graphElement.bendableElement) {%]
+import it.gssi.astra.metaeditor.common.ente.EnteBendable;
+[%}%]
+import it.gssi.astra.metaeditor.common.property.PropertyViewUtils;
+import it.gssi.astra.metaeditor.common.utility.FXMLUtil;
+import it.gssi.astra.metaeditor.common.ente.Pivot;
+[%if (graphElement.anchorPoints.size() > 0) {%]
+import it.gssi.astra.metaeditor.common.magnete.AnchorPoint;
+import it.gssi.astra.metaeditor.common.magnete.MagneteUtils;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ChangeListener;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+[%}%]
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Menu;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.MenuItem;
+import MetaEditor.MetaEditorPersistence.ElementPosition;
+import MetaEditor.MetaEditorConfiguration.GraphicalElement;
+import MetaEditor.MetaEditorConfiguration.RotationPosition;
+import MetaEditor.MetaEditorPersistence.MetaEditorPersistenceFactory;
+import MetaEditor.MetaEditorPersistence.MetaEditorPersistencePackage;
+import it.gssi.astra.metaeditor.common.canvas.SelectionModel;
+import it.gssi.astra.metaeditor.common.dataManager.commands.EMFCommands;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.command.AddCommand;
+import it.gssi.astra.metaeditor.common.canvas.Canvas;
+import it.gssi.astra.metaeditor.common.utility.FXMLUtil;
+
+[%=out.startPreserve("/*","*/","import", true)%]
+//Import Custom
+[%=out.stopPreserve()%]
+
+
+/*
+*@Generated
+*/
+public class [%=graphElement.name%]FX extends [%if (graphElement.bendableElement) {%]EnteBendable[%}else{%]Ente[%}%] {
+
+	[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+	@FXML
+	public AnchorPoint [%=anchor.name%];
+	
+		[%}%]
+	[%}%]
+	
+	private [%=graphElement.element.name%] model = null;
+	
+	[%for (feature in graphElement.element.getEAllStructuralFeatures()) {%]
+	[%if (not(feature.eClass().name == "EReference" and feature.containment)) {%]
+	private BackedCustomPropertyItem [%=feature.name%]_item;
+	[%}%]
+	[%}%]
+
+	[%=out.startPreserve("/*","*/","declaration", true)%]
+	//Declaration Custom
+	[%=out.stopPreserve()%]
+
+	/*
+	*@Generated
+	*/
+	public [%=graphElement.name%]FX([%=graphElement.element.name%] model, ElementPosition elementPosition, GraphicalElement graphicalElement) {
+
+		[%if (not graphElement.nameAttribute.isUndefined()) {%]
+		super(String.valueOf(model.get[%=graphElement.nameAttribute.name.firstToUpperCase()%]()));
+		[%}else{%]
+		super("[%=graphElement.element.name%]");
+		[%}%]
+		
+		this.model = model;
+		this.elementPosition = elementPosition;
+		this.graphicalElement = graphicalElement;
+		
+		fxmlLoader = FXMLUtil.loadFXML(this, getFxmlPath());
+		
+		[%if (graphElement.anchorPoints.size() > 0) {%]
+		initializeAnchorPoints();
+		[%}%]
+		
+		this.allowedRotationPositions.addAll(this.graphicalElement.getRotationPositions());
+		
+		[%for (feature in graphElement.element.getEAllStructuralFeatures()) {%]
+			[%if (not(feature.eClass().name == "EReference" and feature.containment)) {%]
+				[%if (not graphElement.getAnchorRefs().includes(feature) ) {%]
+		this.[%=feature.name%]_item = new BackedCustomPropertyItem(this.model, "Properties", "[%=feature.name%]", [%=feature.isEditable(graphElement)%]);
+				[%}else{%]
+		this.[%=feature.getName()%]_item = new BackedCustomPropertyItem(this.model, "AnchorPoints", "[%=feature.getName()%]", false);
+				[%}%]
+			[%}%]
+		[%}%]
+		
+		[%=out.startPreserve("/*","*/","initializations", true)%]
+		//Initializations Custom
+		[%=out.stopPreserve()%]	
+	}
+	
+	/*
+	*@Generated
+	*/
+	@Override
+	public void populatePropertyView() {
+		
+		super.populatePropertyView();
+	
+		TreeIterator<?> iterator;
+		
+		
+		[%for (feature in graphElement.element.getEAllStructuralFeatures()) {%]
+			[%if (feature.eClass().name == "EAttribute") {%]
+				[% var att : Any = feature;%]
+				[%if (att.getEType().class.getSimpleName() ==  "EEnumImpl" and att.getUpperBound() == -1) {%]
+	    ObservableList<Option> allList[%=att.name%]= FXCollections.observableArrayList();
+		
+		[%=att.getEType().name%].VALUES.forEach(item->{
+			allList[%=att.name%].add(new EnumeratorPropertyValue(item.getName(), item));
+		});
+		
+		this.[%=att.name%]_item.setPayload(allList[%=att.name%]);
+		properties.add(this.[%=att.name%]_item);
+
+				[%}else{%]
+		properties.add(this.[%=att.name%]_item);
+				[%}%]
+			[%}%]
+			[%if (feature.eClass().name == "EReference") {%]
+				[% var localRef : Any = feature;%]
+				[%if (not(localRef.containment)) {%]
+					[%if (localRef.getUpperBound() == 1 and (not graphElement.getAnchorRefs().includes(localRef)) ) {%]
+
+		ObservableList<EObject> [%=localRef.getName()%]_options = FXCollections.observableArrayList();
+	
+		iterator = this.model.eResource().getAllContents();
+		while ( iterator.hasNext ( )) {
+			EObject obj = (EObject) iterator.next();
+						
+				[%for (graphElement in getSubClass(localRef.getEType(),RootClass)) { %]
+			if(obj instanceof [%=graphElement.element.name%]){
+				[%=localRef.getName()%]_options.add(([%=graphElement.element.name%])obj);
+			}
+				[%}%]
+		}
+					
+		this.[%=localRef.getName()%]_item.setEObjectList([%=localRef.getName()%]_options);
+		properties.add(this.[%=localRef.getName()%]_item);
+		
+				[%}%]
+				[%if (not(localRef.containment)) {%]
+					[%if (localRef.getUpperBound() == -1) {%]
+
+		ObservableList<Option> all[%=localRef.getName()%] = FXCollections.observableArrayList();
+		
+		iterator = this.model.eResource().getAllContents();
+		while (iterator.hasNext()) {
+			EObject obj = (EObject) iterator.next();
+		
+					[%for (graphElement in getSubClass(localRef.getEType(),RootClass)) { %]
+			if(obj instanceof [%=graphElement.element.name%]){
+				all[%=localRef.getName()%].add(new ReferencePropertyValue((([%=graphElement.element.name%])obj).get[%=graphElement.nameAttribute.name.firstToUpperCase()%](),obj));
+			}
+					[%}%]
+		}
+		
+		this.[%=localRef.getName()%]_item.setPayload(all[%=localRef.getName()%]);
+		properties.add(this.[%=localRef.getName()%]_item);
+		
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		[%}%]
+
+		[%if (graphElement.anchorPoints.size() > 0) {%]
+		
+		/******* references (anchor points) *******/
+		[%for (feature in graphElement.element.getEAllStructuralFeatures()) {%]
+			[%if (feature.eClass().name == "EReference") {%]
+				[% var localRef : Any = feature;%]
+				[%if (not(localRef.containment)) {%]
+					[%if (localRef.getUpperBound() == 1 and graphElement.getAnchorRefs().includes(localRef) ) {%]
+		ObservableList<EObject> [%=localRef.getName()%]_options = FXCollections.observableArrayList();
+	
+		iterator = this.model.eResource().getAllContents();
+		while ( iterator.hasNext ( )) {
+			EObject obj = (EObject) iterator.next();
+						
+				[%for (graphElement in getSubClass(localRef.getEType(),RootClass)) { %]
+			if(obj instanceof [%=graphElement.element.name%]){
+				[%=localRef.getName()%]_options.add(([%=graphElement.element.name%])obj);
+			}
+				[%}%]
+		}
+					
+		this.[%=localRef.getName()%]_item.setEObjectList([%=localRef.getName()%]_options);
+		properties.add(this.[%=localRef.getName()%]_item);
+		
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		
+		properties.add(magnetizable);
+		[%}%]
+		
+		[%=out.startPreserve("/*","*/","custom_properties", true)%]
+		//Custom properties
+		[%=out.stopPreserve()%]
+
+		// Update PropertySheet view
+		LayoutScene.getInstance().propertySheet.getItems().clear();
+		LayoutScene.getInstance().propertySheet.getItems().addAll(properties);
+	}
+	
+	[%for (localRef in graphElement.element.getEAllReferences()) {%]
+		[%if (localRef.containment) {%]
+	public void create[%=localRef.name.firstToUpperCase() %](){
+	
+		ElementPosition e[%=localRef.name %] = MetaEditorPersistenceFactory.eINSTANCE.createElementPosition();
+		
+		EMFCommands emfCommand = new EMFCommands();
+		emfCommand.add(LayoutScene.getInstance().getRootPersistence(), MetaEditorPersistencePackage.eINSTANCE.getMetaEditorPersistence_ElementPositions(), e[%=localRef.name %]);
+		
+		[%=localRef.getEType().getName%] [%=localRef.name %] = [%=localRef.getEType().ePackage.name.firstToUpperCase()%]Factory.eINSTANCE.create[%=localRef.getEType().getName%]();			
+		e[%=localRef.name %].setElement([%=localRef.name %]);
+		
+		LayoutScene.getAllElementPositions().put([%=localRef.name %], e[%=localRef.name %]);
+		
+		[%if (localRef.isMany()) {%]
+		emfCommand.add(this.model, this.model.eClass().getEStructuralFeature("[%=localRef.name%]"), [%=localRef.name %]);
+		[%}else {%]
+		emfCommand.set(this.model, this.model.eClass().getEStructuralFeature("[%=localRef.name%]"), [%=localRef.name %]);
+		[%}%]
+		
+		e[%=localRef.name %].setX((int)this.elementPosition.getX());
+		e[%=localRef.name %].setY((int)this.elementPosition.getY());
+		e[%=localRef.name %].setZ([%=getGraphicalElement(localRef.getEType()).zIndexDefault%]);
+		[%for (child in localRef.getEType().getEAllReferences()) {%]
+			[%if (child.containment and child.lowerBound > 0) {%]
+			
+		[%=getGraphicalElementName(conf, localRef.getEType()).firstToUpperCase()%]FX node_[%=getGraphicalElementName(conf, localRef.getEType()).firstToUpperCase()%] = ([%=getGraphicalElementName(conf, localRef.getEType()).firstToUpperCase()%]FX) LayoutScene.getViewModelMap().get([%=localRef.name%]);
+			[%break;%]
+			[%}%]
+		[%}%]
+		[%for (child in localRef.getEType().getEAllReferences()) {%]
+			[%if (child.containment and child.lowerBound > 0) {%]
+		IntStream.range(0,[%= child.getLowerBound()%]).forEach(i -> node_[%=getGraphicalElementName(conf, localRef.getEType()).firstToUpperCase()%].create[%=child.name.firstToUpperCase()%]());
+			[%}%]
+		[%}%]
+			
+		[%=out.startPreserve("/*","*/",localRef.name +"custom_pos", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}	
+		[%}%]
+	[%}%]
+	
+	public void createMenu() {
+		[%if(graphElement.hasChild()){%]
+		this.contextMenu.getNewChild().setDisable(false);
+		[%}%]
+		
+		[%for (lo in graphElement.element.getEAllReferences()) {%]
+		[%if (lo.containment) {%]
+		MenuItem menu[%=lo.name.firstToUpperCase() %] = new MenuItem("Inserisci [%=lo.name %]");  
+		this.contextMenu.getNewChild().getItems().addAll(menu[%=lo.name.firstToUpperCase() %]);
+		[%}%]
+		[%}%]
+	
+		/******* references (containment) ********/
+		[%for (localRef in graphElement.element.getEAllReferences()) {%]
+		[%if (localRef.containment) {%]
+		
+		menu[%=localRef.name.firstToUpperCase() %].setId("menu[%=localRef.name.firstToUpperCase() %]");
+		menu[%=localRef.name.firstToUpperCase() %].setOnAction((event) -> {
+			EMFCommands emfCommand = new EMFCommands();
+			emfCommand.begin();
+			create[%=localRef.name.firstToUpperCase() %]();
+			emfCommand.end();
+		});
+		[%if (localRef.upperBound  > 1) {%]
+		if(this.model.get[%=localRef.name.firstToUpperCase()%]().size() == [%=localRef.upperBound %]){
+			menu[%=localRef.name.firstToUpperCase() %].setDisable(true);
+		}else{
+			menu[%=localRef.name.firstToUpperCase() %].setDisable(false);
+		}
+		[%}else if ((localRef.upperBound  == 1)) {%]
+		if(this.model.get[%=localRef.name.firstToUpperCase()%]() != null){
+			menu[%=localRef.name.firstToUpperCase() %].setDisable(true);
+		}else{
+			menu[%=localRef.name.firstToUpperCase() %].setDisable(false);
+		}
+		[%}%]
+		[%}%]
+		[%}%]
+		
+		[%for (lo in graphElement.element.getEAllReferences()) {%]
+		[%if (lo.containment) {%]
+		this.contextMenu.getItems().remove(menu[%=lo.name.firstToUpperCase() %]);
+			[%}%]
+			[%}%]
+
+		[%=out.startPreserve("/*","*/","customizeMenu", true)%]
+		//Customize menu options
+		[%=out.stopPreserve()%]
+	}
+		
+	@Override
+	public void initialization() {
+		
+		super.initialization();
+		
+		[%if(not (graphElement.isUsedByRootChild(RootClass))){ %]
+		EObject eObjectPadre = this.model.eContainer();
+		Ente padreFX = LayoutScene.getViewModelMap().get(eObjectPadre);
+			[%if(graphElement.selectWithParent){ %]
+			
+		padreFX.getDraggableNode().selectedProperty().addListener(getDraggableNode().selectWithParentListener);
+			[%}%]
+		[%}%]
+
+		/****** Generic attributes ******/
+		
+		[%for (att in graphElement.element.getEAllAttributes()) {%]
+			[%if (att.getEType().name ==  "EBoolean") {%]
+		on[%=att.name.firstToUpperCase()%]Changed(this.model.is[%=att.name.firstToUpperCase() %]());
+			[%} else {%]
+		on[%=att.name.firstToUpperCase()%]Changed(this.model.get[%=att.name.firstToUpperCase() %]());
+			[%}%]	
+		[%}%]
+		[%=out.startPreserve("/*","*/","init_custom", true)%]
+			//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+		
+	/****** Generic attributes ******/
+	[%for (att in graphElement.element.getEAllAttributes()) {%]
+	
+	[%if (att.getUpperBound() == 1) {%]
+	[%if (att.getEType().name ==  "EInt") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(String.valueOf(this.model.get[%=att.name.firstToUpperCase()%]()));
+		[%}%]
+
+		[%}else{%]
+			[%if (att.getEType().name ==  "EBoolean") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(String.valueOf(this.model.is[%=att.name.firstToUpperCase()%]()));
+		[%}%]
+
+			[%}else{%]
+				[%if (att.getEType().name ==  "EString") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(this.model.get[%=att.name.firstToUpperCase()%]());
+		[%}%]
+
+				[%}else{%]
+					[%if (att.getEType().name ==  "EDouble") {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(String.valueOf(this.model.get[%=att.name.firstToUpperCase()%]()));
+		[%}%]
+
+					[%}else{%]
+		 				[%if (att.getEType().isKindOf(EEnum)) {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(this.model.get[%=att.name.firstToUpperCase()%]().getName());
+		[%}%]
+						[%}else{%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%if (att == graphElement.nameAttribute) {%]
+		setIdentifier(this.model.get[%=att.name.firstToUpperCase()%]());
+		[%}%]
+				
+						[%}%]
+						[%}%]
+					[%}%]
+				[%}%]
+			[%}%]
+		[%=out.startPreserve("/*","*/",att.name+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+	[%}%]
+		
+	[%}%]
+	
+	
+	[%for (att in graphElement.element.getEAllAttributes())  { %]
+	[%if (att.getUpperBound() == -1) {%]
+		[%if (att.getEType().isKindOf(EEnum)) {%]
+	public void on[%=att.name.firstToUpperCase()%]Changed(Object value) {
+		
+		[%}%]
+		[%=out.startPreserve("/*","*/",att.name+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+	[%}%]
+	[%}%]
+		
+	/****** references (upperBound=1) ******/
+	
+	[%for (localRef in graphElement.element.getEAllReferences()) {%]
+		[%if (localRef.getUpperBound() == 1) {%]
+	public void on[%=localRef.getName().firstToUpperCase()%]Changed(Object value) {
+		[%if(graphElement.getAnchorRefs().includes(localRef)){%]
+		// This method is called when [%=localRef.getName()%] is setted with magnete 
+		[%}%]	
+		[%=out.startPreserve("/*","*/",localRef.getName()+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}		
+		[%}%]
+	[%}%]
+			
+	/******* references (upperBound=-1) ********/
+	
+	[%for (localRef in graphElement.element.getEAllReferences()) {%]
+		[%if (localRef.getUpperBound() > 1 or localRef.getUpperBound() == -1) {%]
+	public void on[%=localRef.getName().firstToUpperCase()%]Changed(Object value) {
+	
+		[%=out.startPreserve("/*","*/",localRef.getName()+"call_behaviour", true)%]
+		//Call behaviour custom
+		[%=out.stopPreserve()%]
+	}
+		[%}%]
+	[%}%]		
+	
+	public [%=graphElement.element.name%] getModel() {
+		return model;
+	}
+	
+	[%if (graphElement.anchorPoints.size() > 0) {%]
+	@Override
+	public List<AnchorPoint> getAnchorPoints() {
+
+		List<AnchorPoint> data = new ArrayList<AnchorPoint>();
+
+	[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+		if ([%=anchor.name%] != null) {
+			data.add([%=anchor.name%]);
+		}
+		
+		[%}%]
+	[%}%]
+		return data;
+	}
+
+	@Override
+	public Map<AnchorPoint, List<AnchorPoint>> getTargetAnchorPointsSet() {
+
+		Map<AnchorPoint, List<AnchorPoint>> data = new HashMap<>();
+
+	[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+		if ([%=anchor.name%] != null) {
+			Class<?>[] targetModels = new Class<?>[] {[%for (targetAnchor in anchor.connectableAnchorPoints) {%][%=targetAnchor.eContainer().element.name%].class[%if (hasMore) %], [%}%]};
+			data.put([%=anchor.name%], MagneteUtils.getAnchorPointTargets(this, targetModels, [%=anchor.name%].getCompatibleTargets()));
+			[%for (targetAnchor in anchor.connectableAnchorPoints) {%]
+				[%if (targetAnchor.fullAnchorPoint) {%]
+				
+			// Targets of type full anchor point
+			AnchorPoint target_full = null;
+				[%break;%]
+				[%}%]
+			[%}%]
+			[%for (targetAnchor in anchor.connectableAnchorPoints) {%]
+				[%if (targetAnchor.fullAnchorPoint) {%]
+			target_full = MagneteUtils.getFullAnchorPointTarget([%=anchor.name%], [%=targetAnchor.eContainer().element.name%].class, "[%=targetAnchor.name%]");
+			if (target_full != null)
+				data.get([%=anchor.name%]).add(target_full);
+				[%}%]
+			[%}%]
+		}
+		
+		[%}%]
+	[%}%]
+		return data;
+	}
+
+	@Override
+	public AnchorPoint getAnchorPointByTarget(Ente enteTarget) {
+
+	[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+			[%if (not(anchor.ref.isUndefined())) {%]
+		if ([%=anchor.name%] != null)
+			if (LayoutScene.getViewModelMap().get(this.model.get[%=anchor.ref.name.firstToUpperCase()%]()) == enteTarget)
+				return [%=anchor.name%];
+		
+			[%}%]
+		[%}%]
+	[%}%]
+	[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+			[%if (anchor.ref.isUndefined()) {%]
+				[%if (anchor.connectableAnchorPoints.isEmpty()) {%]
+		if ([%=anchor.name%] != null)
+			if ([%=anchor.name%].getTarget() == null)
+				return [%=anchor.name%];
+				
+				[%}%]
+			[%}%]
+		[%}%]
+	[%}%]
+		return null;
+	}
+
+	[%}%]
+	
+	[%if (graphElement.anchorPoints.size() > 0) {%]
+	private void initializeAnchorPoints() {
+		[%if (graphElement.anchorPoints.size() > 0) {%]
+		try {
+		[%for (anchor in graphElement.anchorPoints) {%]
+			[%if (not(anchor.fullAnchorPoint)) {%]
+			if ([%=anchor.name%] != null) {
+				[%=anchor.name%].setType("[%=anchor.name.toLowerCase()%]");
+				[%=anchor.name%].setCompatibleTargets(Arrays.asList(
+					[%for (targetAnchor in anchor.connectableAnchorPoints) {%]                                      "[%=targetAnchor.name.toLowerCase()%]"[%if (hasMore) %],
+				[%}%]                                      ));
+			}
+			
+				[%}%]
+			[%}%]
+			[%if (not graphElement.bendableElement) {%]
+				[%for (anchor in graphElement.anchorPoints) {%]
+					[%if (anchor.fullAnchorPoint) {%]
+			for (Node node : this.lookupAll("CustomPolyline")) {
+				CustomPolyline cp = (CustomPolyline) node;
+				cp.addBendPoints();
+				cp.showBendPoints(false);
+			}
+			
+			for (Node node : this.lookupAll("CustomLine")) {
+				CustomLine cl = (CustomLine) node;
+				cl.addBendPoints();
+				cl.showBendPoints(false);
+			}
+			
+					[%break;%]
+					[%}%]
+				[%}%]
+			[%}%]
+		} catch(NullPointerException e) {
+			System.err.println("[%=graphElement.element.name%]FX: initializeAnchorPoints() error.");
+		}
+		[%}%]
+	}
+	[%}%]
+	
+	[%if (graphElement.anchorPoints.size() > 0) {%]
+	@Override
+	public void synchronizeAnchorPoints() {
+		try {
+		[%for (anchor in graphElement.anchorPoints) {%]
+		[%if (not(anchor.fullAnchorPoint)) {%]
+			[%if (anchor.ref.isUndefined()) {%]
+			// L'anchorPoint [%=anchor.name%] non ha una ref associata e quindi non si fa nessun binding
+			[%}else{%]
+			[%=anchor.name%].bindToReference("[%=anchor.ref.name%]");
+			[%}%]
+		[%}%]
+		[%}%]
+		} catch(NullPointerException e) {
+			System.err.println("[%=graphElement.element.name%]FX: AnchorPoint not found on FXML.");
+		}
+	}
+	[%}%]
+	
+	[%=out.startPreserve("/*","*/","behavior", true)%]
+	//Behavior Custom
+	[%=out.stopPreserve()%]
+}
